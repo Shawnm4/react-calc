@@ -31,7 +31,8 @@
   height: 150px;
 }
 
-.num-input {
+.num-display {
+  background-color: white;
   font-size: 50px;
   height: 60px;
   width: 370px;
@@ -64,10 +65,16 @@
 }
 
 .btn {
+  cursor: pointer;
   border-radius: 50px;
   padding: 20px 20px;
   font-size: 25px;
   width: 60px;
   height: 60px;
   box-shadow: 5px 5px 5px 5px rgb(63, 63, 63);
+}
+
+.clearbtn {
+  background-color: #f03e3e;
+  width: 100px;
 }
