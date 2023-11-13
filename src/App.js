@@ -33,16 +33,16 @@ function App() {
 
   function equal() {
     if (adding) {
-      setDisp((disp) => +disp + acc1);
+      setDisp((disp) => (+disp + acc1).toFixed(5));
     }
     if (subtract) {
-      setDisp((disp) => acc1 - Number(disp));
+      setDisp((disp) => (acc1 - Number(disp)).toFixed(5));
     }
     if (divide) {
-      setDisp((disp) => acc1 / Number(disp));
+      setDisp((disp) => (acc1 / Number(disp)).toFixed(5));
     }
     if (multiply) {
-      setDisp((disp) => +disp * acc1);
+      setDisp((disp) => (+disp * acc1).toFixed(5));
     }
   }
 
