@@ -80,6 +80,14 @@ function App() {
     setAcc1((acc) => Number(disp));
     setDisp((disp) => "");
   }
+  function handleClear() {
+    setAdd(false);
+    setSubtract(false);
+    setMulti(false);
+    setDivide(false);
+    setAcc1((acc) => 0);
+    setDisp((disp) => "");
+  }
 
   // function displayNums(num) {
   //   setDisp((nums) => [...nums, num]);
@@ -116,7 +124,9 @@ function App() {
             <div onClick={equal} className="funcbtn btn">
               =
             </div>
-            <div className="funcbtn btn clearbtn">C</div>
+            <div onClick={handleClear} className="funcbtn btn clearbtn">
+              C
+            </div>
           </div>
         </div>
       </div>
