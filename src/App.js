@@ -16,16 +16,81 @@ const nums = [
 ];
 
 function App() {
-  const [acc, setAccu] = useState("");
+  const [disp, setDisp] = useState("");
+  const [acc1, setAcc1] = useState(0);
+  //Arithmetic
+  const [subtract, setSubtract] = useState(false);
+  const [adding, setAdd] = useState(false);
+  const [multiply, setMulti] = useState(false);
+  const [divide, setDivide] = useState(false);
+  // const [results, setResults] = useState("");
+  // const [acc, setAccu] = useState(0);
+
   function displayNums(num) {
-    setAccu((acc) => num.toString());
-    console.log(acc);
+    setDisp((disp) => disp + num.toString());
+    // setAcc1((acc) => acc + num.toString());
   }
+
+  function equal() {
+    if (adding) {
+      setDisp((disp) => +disp + acc1);
+    }
+    if (subtract) {
+      setDisp((disp) => acc1 - Number(disp));
+    }
+    if (divide) {
+      setDisp((disp) => acc1 / Number(disp));
+    }
+    if (multiply) {
+      setDisp((disp) => +disp * acc1);
+    }
+  }
+
+  function handleAdd(disp) {
+    setAdd(true);
+    setSubtract(false);
+    setMulti(false);
+    setDivide(false);
+    setAcc1((acc) => Number(disp));
+    setDisp((disp) => "");
+  }
+
+  function handleSubtract() {
+    setAdd(false);
+    setSubtract(true);
+    setMulti(false);
+    setDivide(false);
+    setAcc1((acc) => Number(disp));
+    setDisp((disp) => "");
+  }
+  function handleDivide() {
+    setAdd(false);
+    setSubtract(false);
+    setMulti(false);
+    setDivide(true);
+    setAcc1((acc) => Number(disp));
+    setDisp((disp) => "");
+  }
+
+  function handleMultiply() {
+    setAdd(false);
+    setSubtract(false);
+    setMulti(true);
+    setDivide(false);
+    setAcc1((acc) => Number(disp));
+    setDisp((disp) => "");
+  }
+
+  // function displayNums(num) {
+  //   setDisp((nums) => [...nums, num]);
+  //   // setDisp((disp) => acc.toString());
+  //   console.log(disp);
+  // }
   return (
     <div className="app-container">
       <div className="calculator-container">
         <div className="input-container">
-          <div className="num-display">{acc}</div>
+          <div className="num-display">{disp}</div>
         </div>
         <div className="func-container">
           <div className="nums-container">
@@ -36,9 +101,21 @@ function App() {
                 onHandleDisplay={displayNums}
               />
             ))}
-            <div className="funcbtn btn">-</div>
-            <div className="funcbtn btn">÷</div>
-            <div className="funcbtn btn">x</div>
+            <div onClick={() => handleAdd(disp)} className="funcbtn btn">
+              +
+            </div>
+            <div onClick={handleSubtract} className="funcbtn btn">
+              -
+            </div>
+            <div onClick={handleDivide} className="funcbtn btn">
+              ÷
+            </div>
+            <div onClick={handleMultiply} className="funcbtn btn">
+              x
+            </div>
+            <div onClick={equal} className="funcbtn btn">
+              =
+            </div>
             <div className="funcbtn btn clearbtn">C</div>
           </div>
         </div>
